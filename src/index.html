@@ -7,11 +7,33 @@
   <title>To-Do list</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <h1>Helllloooo!!!!</h1>
-  <p>Ghjdthrf на дорогах</p>
+  <main class="main">
+    <div class="container">
+      <div class="form__body">
+        <div class="form__body--top"></div>
+        <div class="form">
+          <h1 class="form__body--title">To-Do list</h1>
+          <div class="form__body--sort"></div>
+          <ul class="form__list js-list">
+            <li class="form__item js-item" draggable="true">
+              <div class="form__item--delet js-delet"></div>
+              <input type="text" name="text" class="form__input js-input">
+            </li>
+          </ul>
+          <button class="form__btn">Добавить</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
   <script src="js/script.js"></script>
 </body>
 

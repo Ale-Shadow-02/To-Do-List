@@ -1,1 +1,117 @@
-/* No CSS */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.main {
+  min-height: 100vh;
+}
+
+.container {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form {
+  padding: 0px 20px 20px 20px;
+  text-align: right;
+}
+
+.form__body {
+  width: 336px;
+  border: 1px solid #C4C4C4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.form__body--top {
+  height: 28px;
+  background: #FFDC40;
+  margin: 0px 0px 17px 0px;
+}
+
+.form__body--title {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0px 0px 12px 0px;
+}
+
+.form__body--sort {
+  display: inline-block;
+  background: url(../images/sort-top.svg) right no-repeat;
+  width: 25px;
+  height: 15px;
+  margin: 0px 10px 11px 0px;
+  cursor: pointer;
+}
+
+.form__body--sort:hover {
+  background: url(../images/sort-top-hover.svg) right no-repeat;
+}
+
+.form__item {
+  margin: 0px 0px 20px 0px;
+  background: url(../images/drag.svg) 15px no-repeat;
+  height: 40px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: move;
+}
+
+.form__item--delet {
+  background: url(../images/delet.svg) no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.form__item--delet:hover {
+  background: url(../images/delet-hover.svg) no-repeat;
+}
+
+.form__input {
+  width: 80%;
+  height: 100%;
+  display: block;
+  margin: 0px auto;
+}
+
+.form__btn {
+  display: block;
+  margin: 0px auto;
+  padding: 0px 0px 0px 12px;
+  width: 150px;
+  height: 42px;
+  background: #833AE0 url(../images/add-btn.svg) left no-repeat;
+  border-radius: 71px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.form__btn:hover {
+  background: #9953F1 url(../images/add-btn.svg) left no-repeat;
+}
