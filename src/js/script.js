@@ -94,8 +94,6 @@ button.addEventListener('click', function (event) {
 
     for (let li of sortLiItems) {
       ulList.appendChild(li);
-      ulList.reverse();
-      console.log('ulList: ', ulList);
     }
 
   });
