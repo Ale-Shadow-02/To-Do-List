@@ -48,17 +48,14 @@ body {
         background: url(../images/sort-top-hover.svg) right no-repeat;
       }
 		}
-		&__list {
-		}
+		
 		&__item {
       margin: 0px 0px 20px 0px;
-      background: url(../images/drag.svg) 15px no-repeat;
       height: 40px;
       border: 1px solid #C4C4C4;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
-      cursor: move;
       &--delet {
         background: url(../images/delet.svg) no-repeat;
         width: 20px;
@@ -71,9 +68,21 @@ body {
           background: url(../images/delet-hover.svg) no-repeat;
         }
       }
+      &--drag {
+        background: url(../images/drag.svg) no-repeat;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 12px;
+        left: 8px;
+        &:hover {
+          cursor: move;
+        }
+      }
     }
 
     &__input {
+      background-color: transparent;
       width: 80%;
       height: 100%;
       display: block;
@@ -98,4 +107,8 @@ body {
         background: #9953F1 url(../images/add-btn.svg) left no-repeat;
       }
     }
+}
+
+.selected {
+  background-color: #FFDC40;
 }

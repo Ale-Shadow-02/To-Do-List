@@ -1,24 +1,83 @@
 const button = document.querySelector('.form__btn');
 const ulList = document.querySelector('.js-list');
-const deletLi = document.querySelector('.js-delet');
+let liItem = document.querySelector('.form__item');
+let deletLi = document.querySelector('.form__item--delet');
 
 
+deletLi.addEventListener('click', function () {
+  ulList.removeChild(liItem);
+});
 
-button.addEventListener('click', (event) => {
+button.addEventListener('click', function (event) {
   event.preventDefault();
 
   let li = document.createElement('li');
+  let divDelet = document.createElement('div');
+  let divDrag = document.createElement('div');
+  let input = document.createElement('input');
+
   li.classList.add('form__item');
-  li.innerHTML = '<div class="form__item--delet"></div><input type="text" class="form__input">';
+  li.setAttribute('draggable', true);
+  divDelet.classList.add('form__item--delet');
+  divDrag.classList.add('form__item--drag');
+  input.classList.add('form__input');
+  li.appendChild(divDelet);
+  li.appendChild(divDrag);
+  li.appendChild(input);
+
   ulList.appendChild(li);
-});
 
-let liItem = document.querySelector('.form__item');
-console.log('liItem: ', liItem);
+  let liItems = document.querySelectorAll('li');
+
+  divDelet.addEventListener('click', function (event) {
+    ulList.removeChild(li);
+  });
+
+
+  ulList.addEventListener('dragstart', function (event) {
+    event.target.classList.add('selected');
+  });
+
+  ulList.addEventListener('dragend', function (event) {
+    event.target.classList.remove('selected');
+  });
+
+  const getNextElement = function (cursorPosition, currentElement) {
+    const currentElementCoord = currentElement.getBoundingClientRect();
+    const currentElementCenter = currentElementCoord.y + currentElementCoord.height / 2;
+
+    const nextElement = (cursorPosition < currentElementCenter) ?
+      currentElement :
+      currentElement.nextElementSibling;
+
+
+    return nextElement;
+  };
+
+  ulList.addEventListener('dragover', function (event) {
+    event.preventDefault();
+    const activeElement = ulList.querySelector('.selected');
+    const currentElement = event.target;
+    const isMoveable = activeElement !== currentElement && currentElement.classList.contains('form__item');
+
+    if (!isMoveable) {
+      return;
+    }
+    //!Переписать 
+    /* const nextElement = (currentElement === activeElement.nextElementSibling) ?
+      currentElement.nextElementSibling :
+      currentElement; */
+
+    const nextElement = getNextElement(event.clientY, currentElement);
+
+    if (
+      nextElement && activeElement === nextElement.previousElementSibling || activeElement === nextElement) {
+      return;
+    }
+
+    ulList.insertBefore(activeElement, nextElement);
+  });
 
 
 
-deletLi.addEventListener('click', () => {
-  // let target = event.target;
-  ulList.removeChild(liItem);
 });
