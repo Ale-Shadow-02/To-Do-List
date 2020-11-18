@@ -2,6 +2,7 @@ const button = document.querySelector('.form__btn');
 const ulList = document.querySelector('.js-list');
 let liItem = document.querySelector('.form__item');
 let deletLi = document.querySelector('.form__item--delet');
+let formBodySort = document.querySelector('.form__body--sort');
 
 
 deletLi.addEventListener('click', function () {
@@ -77,6 +78,28 @@ button.addEventListener('click', function (event) {
 
     ulList.insertBefore(activeElement, nextElement);
   });
+
+
+  formBodySort.addEventListener('click', function (event) {
+    event.target.style.transform = 'rotate(180deg)';
+    let sortLiItems = [...liItems].sort(function (a, b) {
+      if (a.lastElementChild.value >= b.lastElementChild.value) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+    ulList.innerHTML = '';
+
+    for (let li of sortLiItems) {
+      ulList.appendChild(li);
+      ulList.reverse();
+      console.log('ulList: ', ulList);
+    }
+
+  });
+
 
 
 
