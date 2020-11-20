@@ -25,21 +25,7 @@ button.addEventListener('click', function (event) {
   li.appendChild(divDelet);
   li.appendChild(divDrag);
   li.appendChild(input);
-
   ulList.appendChild(li);
-
-
-
-  divDelet.addEventListener('click', function (event) {
-    // let target = event.target;
-    // [...liItems].splice(0, 1);
-    //ulList.removeChild(li);
-    //divDelet.parentElement.remove();
-    divDelet.closest('li').remove();
-  });
-
-
-
 
   ulList.addEventListener('dragstart', function (event) {
     event.target.classList.add('selected');
@@ -69,10 +55,6 @@ button.addEventListener('click', function (event) {
     if (!isMoveable) {
       return;
     }
-    //!Переписать 
-    /* const nextElement = (currentElement === activeElement.nextElementSibling) ?
-      currentElement.nextElementSibling :
-      currentElement; */
 
     const nextElement = getNextElement(event.clientY, currentElement);
 
@@ -84,36 +66,41 @@ button.addEventListener('click', function (event) {
     ulList.insertBefore(activeElement, nextElement);
   });
 
-  let liItems = document.querySelectorAll('li');
-  console.log('liItems: ', liItems);
+  divDelet.addEventListener('click', function (event) {
 
-  formBodySort.addEventListener('click', function (event) {
-    event.target.classList.toggle('sort-bottom');
-    let sortLiItems;
-    if (event.target.classList.contains('sort-bottom')) {
-      sortLiItems = [...liItems].sort(function (a, b) {
-        if (a.lastElementChild.value.charCodeAt(0) >= b.lastElementChild.value.charCodeAt(0)) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    } else {
-      sortLiItems = [...liItems].sort(function (a, b) {
-        if (a.lastElementChild.value.charCodeAt(0) <= b.lastElementChild.value.charCodeAt(0)) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    }
-
-    ulList.innerHTML = '';
-
-    for (let li of sortLiItems) {
-      ulList.appendChild(li);
-    }
+    ulList.removeChild(li);
 
   });
+
+});
+
+formBodySort.addEventListener('click', function (event) {
+  let liItems = document.querySelectorAll('li');
+  console.log(this, liItems);
+  event.target.classList.toggle('sort-bottom');
+  let sortLiItems;
+  if (event.target.classList.contains('sort-bottom')) {
+    sortLiItems = [...liItems].sort(function (a, b) {
+      if (a.lastElementChild.value.charCodeAt(0) >= b.lastElementChild.value.charCodeAt(0)) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+  } else {
+    sortLiItems = [...liItems].sort(function (a, b) {
+      if (a.lastElementChild.value.charCodeAt(0) <= b.lastElementChild.value.charCodeAt(0)) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+  }
+
+  ulList.innerHTML = '';
+
+  for (let li of sortLiItems) {
+    ulList.appendChild(li);
+  }
 
 });
