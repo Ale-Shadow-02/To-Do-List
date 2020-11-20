@@ -131,3 +131,16 @@ body {
 .selected {
   background-color: #FFDC40;
 }
+
+.sort-bottom {
+  display: inline-block;
+  background: url(../images/sort-bottom.svg) right no-repeat;
+  width: 25px;
+  height: 15px;
+  margin: 0px 10px 11px 0px;
+  cursor: pointer;
+}
+
+.sort-bottom:hover {
+  background: url(../images/sort-bottom-hover.svg) right no-repeat;
+}

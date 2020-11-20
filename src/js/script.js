@@ -28,11 +28,17 @@ button.addEventListener('click', function (event) {
 
   ulList.appendChild(li);
 
-  let liItems = document.querySelectorAll('li');
+
 
   divDelet.addEventListener('click', function (event) {
-    ulList.removeChild(li);
+    // let target = event.target;
+    // [...liItems].splice(0, 1);
+    //ulList.removeChild(li);
+    //divDelet.parentElement.remove();
+    divDelet.closest('li').remove();
   });
+
+
 
 
   ulList.addEventListener('dragstart', function (event) {
@@ -50,7 +56,6 @@ button.addEventListener('click', function (event) {
     const nextElement = (cursorPosition < currentElementCenter) ?
       currentElement :
       currentElement.nextElementSibling;
-
 
     return nextElement;
   };
@@ -79,16 +84,29 @@ button.addEventListener('click', function (event) {
     ulList.insertBefore(activeElement, nextElement);
   });
 
+  let liItems = document.querySelectorAll('li');
+  console.log('liItems: ', liItems);
 
   formBodySort.addEventListener('click', function (event) {
-    event.target.style.transform = 'rotate(180deg)';
-    let sortLiItems = [...liItems].sort(function (a, b) {
-      if (a.lastElementChild.value >= b.lastElementChild.value) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+    event.target.classList.toggle('sort-bottom');
+    let sortLiItems;
+    if (event.target.classList.contains('sort-bottom')) {
+      sortLiItems = [...liItems].sort(function (a, b) {
+        if (a.lastElementChild.value.charCodeAt(0) >= b.lastElementChild.value.charCodeAt(0)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    } else {
+      sortLiItems = [...liItems].sort(function (a, b) {
+        if (a.lastElementChild.value.charCodeAt(0) <= b.lastElementChild.value.charCodeAt(0)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    }
 
     ulList.innerHTML = '';
 
@@ -97,8 +115,5 @@ button.addEventListener('click', function (event) {
     }
 
   });
-
-
-
 
 });
