@@ -28,4 +28,4 @@ To-Do лист содержит набор записей.
 
 HTML, CSS, SCSS, Java Script
 
-Открыть проект [ToDoList]()
+Открыть проект [ToDoList](https://ale-shadow-02.github.io/To-Do-List/src/)
